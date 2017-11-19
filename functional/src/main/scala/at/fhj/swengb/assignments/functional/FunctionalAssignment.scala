@@ -38,13 +38,33 @@ object FunctionalAssignment {
   // What did you gain with your new names? What did you loose?
   //
   /**
+    * Die Funktion op nimmt eine Sequenz (as) und wendet darauf eine Fold-Left Funktion an. Mithilfe dieser wird jeder Wert
+    * aus der Sequenz herangenommen und mit dem Akkumulator (Parameter b) gemäß der Funktion fn kombiniert. Z.B. man hat
+    * den Wert 1 aus einer Liste, der Akkumulator ist Null und die Funktion ist (_+_) -> dann wird 1 und 0 addiert. Das ergibt
+    * 1 und dieser Wert ist der neue Akkumulator, welcher dann wiederum zum nächsten Wert in der Liste addiert wird, bis die Liste
+    * leer ist. A und B bedeutet, dass die verschiedenen Parameter unterschiedliche Typen haben können (aber nicht müssen) ->
+    * müssten sie den gleichen Typ haben, würden alle Parameter z.B. A haben.
     *
     * @param as
     * @param b
     * @param fn
+    * @tparam A 
+    * @tparam B
+    * @return
+    *
+    * neue Parameternamen für diese Funktion (op)
+    * @param list
+    * @param acc
+    * @param fn
     * @tparam A
     * @tparam B
     * @return
+    *
+    *  im Fall der Funktion op würde ich den Parameter für die Sequenz in list umtaufen, da so besser hervorgeht, dass es sich um eine
+    *  Liste handelt. Den Akkumulator würde ich mit acc bezeichnet, da somit klarer ist, dass es sich um einen Akkumulator handelt, als
+    *  wenn nur der Buchstabe b dort steht. fn würde ich nicht verändern, eventuell zu func erweitern, damit klarer hervorgeht, dass
+    *  es sich um eine Funktion handelt. A und B zu ändern ist meiner Meinung nach nicht notwendig, es ist klar ersichtlich, dass es sich
+    *  um unterschiedliche Typen handelt.
     */
   def op[A, B](as: Seq[A], b: B)(fn: (B, A) => B): B = as.foldLeft(b)(fn)
 
