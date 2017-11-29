@@ -43,18 +43,17 @@ object Graph {
     */
   def traverse[A, B](tree: Tree[A])(convert: A => B): Seq[B] = {
 
-    //Helper to add all elements to list
-    def addElemToList(elem: Tree[A], list: Seq[A]): Seq[A] = {
+    def add(elem: Tree[A], list: Seq[A]): Seq[A] = {
       elem match {
-        case Node(x) => list.seq :+ x
-        case Branch(left, right) =>
-          addElemToList(left, addElemToList(right, list))
+        case Node(n) => list.seq :+ n
+        case Branch(le, ri) => add(le, add(ri, list))
       }
     }
 
-    //Add all nodes to list and map operation
-    addElemToList(tree, List()).reverse.map(convert)
+    //Put the nodes into a list and map operation
+    add(tree, List()).reverse.map(convert)
   }
+
 
   /**
     * Creates / constructs a tree graph.
@@ -77,92 +76,61 @@ object Graph {
               angle: Double = 45.0,
               colorMap: Map[Int, Color] = Graph.colorMap): Tree[L2D] = {
 
-    //Allow just positive depth until max depth of given colors -1 to avoid IndexOutOfBound exceptions...
+    //illegal tree + treeSize0
     require(treeDepth >= 0 && treeDepth <= (colorMap.size - 1))
+    Node(L2D(start, initialAngle, length, colorMap(0)))
 
-    /** Helper function to create Branch with given node
-      * @param leaf   currently a leaf but becomes root of created subtree
-      * @param factor factor which the lengh is decreasing to child
-      * @param angle  Angle between child and root
-      * @param color  Color of childs
-      *
-      * @return A Subtree wich given node as root and a left & right child
-      */
-    def createSubTree(leaf: Node[L2D],
+
+    def makeSubTree(leaf: Node[L2D],
                       factor: Double,
                       angle: Double,
                       color: Color): Branch[L2D] = {
-      //Create new childs for given leaf
+
       val nodeLeft = Node(leaf.value.left(factor, angle, color))
       val nodeRight = Node(leaf.value.right(factor, angle, color))
 
-      //Return created subtree
       Branch(leaf, Branch(nodeLeft, nodeRight))
     }
 
-    /**
-      * Helper function to create a tree with a certain depth.
-      * @param currTree Current tree. This is the start and will increased to the given level
-      * @param depth    Start-Value of dept to start
-      * @param maxDepth Maximum depth of tree. Usually limited by amount of colors
-      * @return
-      */
-    def createTree(currTree: Tree[L2D],
+    def makeTree(currTree: Tree[L2D],
                    depth: Int,
                    maxDepth: Int): Tree[L2D] = {
       if (depth == maxDepth)
-      /*We've reached requested depth of tree, we're done*/
         currTree
       else {
-        /*Still levels to add...*/
-
-        /** Subhelper to add a new level to given tree if iteration requires.
-          * According to the given tree, heler has to deal with it:
-          * A tree can look like:
-          *   Node(x) => Its a level 0 tree(just root). Create a subtree out of it. (create Level 1)
-          *   Branch(Node,Branch(Node,Node) => It is a leaf. In this case a new level needs to added
-          *   Branch(Node(Branch(Branch,Branch) => Somewhere in the middle of the tree. Just iterate further
-          * @param tree - Tree to verify and add new level is possible in this iteration
-          * @param currLevel - current level of iteration. Defines color for new possible created level
-          * @return Tree with new level if neccessary in given iteration.
-          */
         def addNewLevel(tree: Tree[L2D], currLevel: Int): Branch[L2D] = {
           tree match {
             case Node(root) =>
-              /*Given tree was only a node(root), create a Branch out of it (Level 1) */
-              createSubTree(Node(root), factor, angle, colorMap(currLevel))
+              makeSubTree(Node(root), factor, angle, colorMap(currLevel))
             case Branch(Node(root), Branch(Node(left), Node(right))) =>
-              /*Given tree is a leaf. Append new level */
               val newSubtreeLeft =
-                createSubTree(Node(left), factor, angle, colorMap(currLevel))
+                makeSubTree(Node(left), factor, angle, colorMap(currLevel))
               val newSubtreeRight =
-                createSubTree(Node(right), factor, angle, colorMap(currLevel))
+                makeSubTree(Node(right), factor, angle, colorMap(currLevel))
               Branch(Node(root), Branch(newSubtreeLeft, newSubtreeRight))
             case Branch(Node(root), Branch(left, right)) =>
-              /*Given tree is a subtree in the middle of the tree.
-                Go further(deeper) in the tree on the left and right side and increase level*/
               Branch(Node(root),
                 Branch(addNewLevel(left, depth + 1),
                   addNewLevel(right, depth + 1)))
-            case Branch(_, _) => ??? /*Fallback - If this happens, some crazy shit is going on...*/
+            case Branch(_, _) => ???
           }
         }
 
-        //Recursive call but with newly created tree from helper function.
-        createTree(addNewLevel(currTree, depth), depth + 1, maxDepth)
+        makeTree(addNewLevel(currTree, depth), depth + 1, maxDepth)
       }
     }
 
-    //Create Tree according depth
-    //Create initial root node
     val rootNode: Tree[L2D] = Node(
       L2D(start, initialAngle, length, colorMap(0)))
 
-    //Append tree according given depth
     treeDepth match {
       case 0 => rootNode
-      case _ => createTree(rootNode, 0, treeDepth)
+      case _ => makeTree(rootNode, 0, treeDepth)
     }
+
+
+
+
   }
 }
 
