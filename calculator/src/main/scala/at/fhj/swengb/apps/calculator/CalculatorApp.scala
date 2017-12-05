@@ -50,7 +50,83 @@ class CalculatorFxController extends Initializable {
 
   }
 
-  def sgn() : Unit = {
+  def one() : Unit = {
+    println("an event has happened")
+  }
+
+  def two() : Unit = {
+    println("an event has happened")
+  }
+
+  def three() : Unit = {
+    println("an event has happened")
+  }
+
+  def four() : Unit = {
+    println("an event has happened")
+  }
+
+  def five() : Unit = {
+    println("an event has happened")
+  }
+
+  def six() : Unit = {
+    println("an event has happened")
+  }
+
+  def seven() : Unit = {
+    println("an event has happened")
+  }
+
+  def eight() : Unit = {
+    println("an event has happened")
+  }
+
+  def nine() : Unit = {
+    println("an event has happened")
+  }
+
+  def zero() : Unit = {
+    println("an event has happened")
+  }
+
+  def plus() : Unit = {
+    println("an event has happened")
+  }
+
+  def minus() : Unit = {
+    println("an event has happened")
+  }
+
+  def divide() : Unit = {
+    println("an event has happened")
+  }
+
+  def multiply() : Unit = {
+    println("an event has happened")
+  }
+
+  def enter() : Unit = {
+    println("an event has happened")
+  }
+
+  def next() : Unit = {
+    println("an event has happened")
+  }
+
+  def point() : Unit = {
+    println("an event has happened")
+  }
+
+  def clear() : Unit = {
+    println("an event has happened")
+  }
+
+  def invert() : Unit = {
+    println("an event has happened")
+  }
+
+  def percent() : Unit = {
     println("an event has happened")
   }
 }

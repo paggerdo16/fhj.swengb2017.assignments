@@ -5,6 +5,16 @@
 	-fx-background-color:#00ff00;
 }
 
+#calculator .darkgrey{
+    -fx-background-color:#7e7e7e;
+}
+
 #calculator .grey {
-	-fx-background-color:#ff00ff;
+	-fx-background-color:#dadada;
+	-fx-border-color:#7e7e7e;
+}
+
+#calculator .orange {
+    -fx-background-color:#ff802b;
+    -fx-border-color:#7e7e7e;
 }
