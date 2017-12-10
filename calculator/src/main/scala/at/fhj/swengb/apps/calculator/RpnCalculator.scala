@@ -14,7 +14,27 @@ object RpnCalculator {
     * @param s a string representing a calculation, for example '1 2 +'
     * @return
     */
-  def apply(s: String): Try[RpnCalculator] = ???
+  def apply(s: String): Try[RpnCalculator] = {
+    val listOfOp = "+-/*"
+    if (s.isEmpty) {
+      Try(RpnCalculator())
+    }
+    else {
+      if (listOfOp.contains(s.head)) {
+        Try[RpnCalculator](throw new NoSuchElementException)
+      }
+      else {
+        try {
+          val liste: List[Op] = s.split(' ').map(x => Op(x)).toList
+
+          liste.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
+        }
+        catch {
+          case fail: Exception => Try[RpnCalculator](throw fail)
+        }
+      }
+    }
+  }
 
 }
 
@@ -32,7 +52,31 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @param op
     * @return
     */
-  def push(op: Op): Try[RpnCalculator] = ???
+  def push(op: Op): Try[RpnCalculator] = {
+    op match {
+      case value: Val => Try(RpnCalculator(stack :+ value))
+      case operation: BinOp => {
+        def getVal(smthng: RpnCalculator): Val = {
+          val gottenVal = smthng.peek()
+          gottenVal match {
+            case value: Val => value
+            case _ => throw new NoSuchElementException
+          }
+        }
+
+        val firstPart = getVal(this)
+        var restStack: RpnCalculator = pop()._2
+        val sndPart = getVal(restStack)
+        restStack = restStack.pop()._2
+
+        val result = operation.eval(firstPart, sndPart)
+
+        restStack.push(result)
+      }
+    }
+
+
+  }
 
   /**
     * Pushes val's on the stack.
@@ -42,26 +86,35 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @param op
     * @return
     */
-  def push(op: Seq[Op]): Try[RpnCalculator] = ???
+  def push(op: Seq[Op]): Try[RpnCalculator] = {
+    op.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
+  }
 
   /**
     * Returns an tuple of Op and a RevPolCal instance with the remainder of the stack.
     *
     * @return
     */
-  def pop(): (Op, RpnCalculator) = ???
+  def pop(): (Op, RpnCalculator) = (stack.head, RpnCalculator(stack.tail))
 
   /**
     * If stack is nonempty, returns the top of the stack. If it is empty, this function throws a NoSuchElementException.
     *
     * @return
     */
-  def peek(): Op = ???
+  def peek(): Op = {
+    if (stack.isEmpty) {
+      throw new NoSuchElementException("List must have values in it!!!")
+    }
+    else {
+      stack.head
+    }
+  }
 
   /**
     * returns the size of the stack.
     *
     * @return
     */
-  def size: Int = ???
+  def size: Int = stack.size
 }

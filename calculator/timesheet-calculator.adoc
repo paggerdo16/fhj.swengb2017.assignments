@@ -1,28 +1,32 @@
 == Time expenditure: Calculator assignment
 
 
-[cols="1,1,1,4", options="header"]
+[cols="1,1,4", options="header"]
 .Time expenditure
 |===
 | Date
-| Hours (planned)
-| Hours (spend)
+| Hours
 | Description
 
 | 04.12.17
-| 2
 | 1
 | Create Buttons
 
 | 04.12.17
-| 1
 | 1.5
 | Read this and that
 
 | 07.12.17
-| 1
 | 1.5
 | Make TimesheetSpec
+
+| 09.12.17
+| 4
+| Try to solve RpnCalculator
+
+| 9.12.17
+| 1807
+| implement RpnCalculator in Buttons
 
 
 

@@ -13,6 +13,9 @@ class TimesheetSpec extends WordSpecLike {
   val file = "C:\\Workspace\\fhj.swengb2017.assignments\\calculator\\timesheet-calculator.adoc"
   val new_file = Paths.get(file)
 
+  val notString = Files.readAllLines(new_file).asScala
+  val isString = notString.foldLeft("") ((acc, e) => acc + e + "\n")
+
   val timesheet = """== Time expenditure: Calculator assignment
                     |
                     |
@@ -46,7 +49,7 @@ class TimesheetSpec extends WordSpecLike {
 
   "Timetable" should {
     "be not the same as expected" in {
-      assert(println(Files.readAllLines(new_file)) != timesheet)
+      assert( isString != timesheet)
     }
 
   }
