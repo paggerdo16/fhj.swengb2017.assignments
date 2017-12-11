@@ -149,18 +149,22 @@ class CalculatorFxController extends Initializable {
   }
 
   def enter(): Unit = {
-    getCalculator().push(Op(Text1.getText)) match {
-      case Success(s) => setCalculator(s)
-      case Failure(f) => println(f.toString)
-    }
-    if (getCalculator().stack.size == 1) {
-      Textlast.setText("")
-      Text1.setText("")
-      Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+    if (Text1.getText.nonEmpty) {
+      getCalculator().push(Op(Text1.getText)) match {
+        case Success(s) => setCalculator(s)
+        case Failure(f) => println(f.toString)
+      }
+      if (getCalculator().stack.size == 1) {
+        Textlast.setText("")
+        Text1.setText("")
+        Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+      } else {
+        Text1.setText("")
+        Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+        Textlast.setText(getCalculator().stack.init.last.toString.init.drop(4))
+      }
     } else {
-      Text1.setText("")
-      Text2.setText(getCalculator().stack.last.toString.init.drop(4))
-      Textlast.setText(getCalculator().stack.init.last.toString.init.drop(4))
+      Textlast.setText("Zuerst muss eine Zahl eingegeben werden!")
     }
   }
 
