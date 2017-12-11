@@ -6,6 +6,7 @@ import javafx.application.Application
 import javafx.fxml.{FXMLLoader, Initializable}
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
+import
 
 import scala.util.control.NonFatal
 
@@ -46,6 +47,8 @@ class CalculatorFX extends javafx.application.Application {
 }
 
 class CalculatorFxController extends Initializable {
+
+  val calculatorProperty: ObjectProperty[RpnCalculator]
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
