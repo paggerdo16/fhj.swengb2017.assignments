@@ -17,14 +17,18 @@
 
 | 8.12.17
 | 2
-| implementation of Div, Peek, Pop and size
+| implementation of Div, peek, pop and size
 
 | 9.12.17
 | 2
 | working on apply and push
 
+| 10.12.17
+| 2
+| last touches on the design, working on apply and push
+
 | 11.12.17
 | 4
-| last touches on the design, working on apply and push
+| connecting calculator with functions, implementing clear, sing change, enter and all the other on-Action functions
 
 |===
