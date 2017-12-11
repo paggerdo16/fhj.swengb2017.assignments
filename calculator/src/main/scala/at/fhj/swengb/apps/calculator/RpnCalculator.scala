@@ -19,10 +19,11 @@ object RpnCalculator {
     if (s.isEmpty) {
       Try(RpnCalculator())}
     else {
-      val temporaryStack: List[Op]= s.split(" ").map(n => Op(n)).toList
-      val calculi = RpnCalculator(temporaryStack)
+      val temporaryStack: List[Op] = s.split(' ').map(n => Op(n)).toList
+      var calcul1 = RpnCalculator()
+      calcul1 = calcul1.push(temporaryStack).get
 
-      Try(calculi)
+      Try(calcul1)
     }
   }
 
@@ -45,8 +46,15 @@ case class RpnCalculator(stack: List[Op] = Nil) {
   def push(op: Op): Try[RpnCalculator] = {
 
 
-
-    Try(RpnCalculator(stack :+ op))
+    if (op.isInstanceOf[Val]) {
+      Try(RpnCalculator(op :: stack))
+    }
+    else {
+      val first: Val = stack.head.asInstanceOf[Val]
+      val second: Val = stack.tail.head.asInstanceOf[Val]
+      val result: Val = op.asInstanceOf[BinOp].eval(second, first)
+      Try(RpnCalculator(result :: stack.drop(2)))
+    }
   }
 
   /**
@@ -57,7 +65,14 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @param op
     * @return
     */
-  def push(op: Seq[Op]): Try[RpnCalculator] = ???
+  def push(op: Seq[Op]): Try[RpnCalculator] = {
+
+    var calcul2 = RpnCalculator()
+    for (n <- op) {
+      calcul2 = calcul2.push(n).get
+    }
+    Try(calcul2)
+  }
 
   /**
     * Returns an tuple of Op and a RevPolCal instance with the remainder of the stack.

@@ -11,21 +11,21 @@
 <GridPane id="calculator" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" styleClass="gridpane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.calculator.CalculatorFxController">
     <children>
 
-        <TextField fx:id="TextField1" alignment="CENTER_RIGHT" editable="false" prefHeight="100.0" prefWidth="500.0" text="0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="1">
+        <TextField fx:id="TextField1" alignment="CENTER_RIGHT" editable="false" prefHeight="100.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="TextField2" alignment="CENTER_RIGHT" editable="false" prefHeight="100.0" prefWidth="500.0" text="0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="2">
+      <TextField fx:id="TextField2" alignment="CENTER_RIGHT" editable="false" prefHeight="100.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
          <font>
             <Font size="18.0" />
          </font></TextField>
-      <TextField fx:id="TextField3" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="500.0" text="0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="3">
+      <TextField fx:id="TextField3" alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="500.0" GridPane.columnIndex="2" GridPane.columnSpan="7" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin>
@@ -39,17 +39,17 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="7" GridPane.columnIndex="2" GridPane.rowIndex="8">
+        <Button mnemonicParsing="false" onAction="#sieben" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="7" GridPane.columnIndex="2" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="4" GridPane.columnIndex="2" GridPane.rowIndex="10">
+        <Button mnemonicParsing="false" onAction="#vier" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="4" GridPane.columnIndex="2" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="1" GridPane.columnIndex="2" GridPane.rowIndex="12">
+        <Button mnemonicParsing="false" onAction="#eins" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="1" GridPane.columnIndex="2" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </GridPane.margin></Button>
@@ -59,67 +59,67 @@
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="8" GridPane.columnIndex="4" GridPane.rowIndex="8">
+        <Button mnemonicParsing="false" onAction="#acht" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="8" GridPane.columnIndex="4" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="5" GridPane.columnIndex="4" GridPane.rowIndex="10">
+        <Button mnemonicParsing="false" onAction="#fünf" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="5" GridPane.columnIndex="4" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="2" GridPane.columnIndex="4" GridPane.rowIndex="12">
+        <Button mnemonicParsing="false" onAction="#zwei" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="2" GridPane.columnIndex="4" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="252.0" styleClass="numbers" text="0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="14">
+        <Button mnemonicParsing="false" onAction="#zero" prefHeight="100.0" prefWidth="252.0" styleClass="numbers" text="0" GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="9" GridPane.columnIndex="6" GridPane.rowIndex="8">
+        <Button mnemonicParsing="false" onAction="#neun" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="9" GridPane.columnIndex="6" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="6" GridPane.columnIndex="6" GridPane.rowIndex="10">
+        <Button mnemonicParsing="false" onAction="#sechs" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="6" GridPane.columnIndex="6" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="3" GridPane.columnIndex="6" GridPane.rowIndex="12">
+        <Button mnemonicParsing="false" onAction="#drei" prefHeight="100.0" prefWidth="125.0" styleClass="numbers" text="3" GridPane.columnIndex="6" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="," GridPane.columnIndex="6" GridPane.rowIndex="6">
+        <Button mnemonicParsing="false" onAction="#comma" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="," GridPane.columnIndex="6" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="÷" GridPane.columnIndex="8" GridPane.rowIndex="6">
+        <Button mnemonicParsing="false" onAction="#div" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="÷" GridPane.columnIndex="8" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="x" GridPane.columnIndex="8" GridPane.rowIndex="8">
+        <Button mnemonicParsing="false" onAction="#mal" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="x" GridPane.columnIndex="8" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="-" GridPane.columnIndex="8" GridPane.rowIndex="10">
+        <Button mnemonicParsing="false" onAction="#minus" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="-" GridPane.columnIndex="8" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="+" GridPane.columnIndex="8" GridPane.rowIndex="12">
+        <Button mnemonicParsing="false" onAction="#plus" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="+" GridPane.columnIndex="8" GridPane.rowIndex="12">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="82.0" prefWidth="252.0" styleClass="notnumbers" text="enter" GridPane.columnIndex="6" GridPane.columnSpan="2147483647" GridPane.rowIndex="14">
+        <Button mnemonicParsing="false" onAction="#calcul" prefHeight="82.0" prefWidth="252.0" styleClass="notnumbers" text="enter" GridPane.columnIndex="6" GridPane.columnSpan="2147483647" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>

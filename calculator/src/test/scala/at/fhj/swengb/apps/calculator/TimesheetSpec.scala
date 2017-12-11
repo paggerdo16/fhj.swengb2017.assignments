@@ -10,7 +10,7 @@ import scala.collection.JavaConverters._
 class TimesheetSpec extends WordSpecLike {
 
 
-  val p: Path = Paths.get("timesheet-calculator.adoc")
+  val p: Path = Paths.get("/Users/nadineneumann/workspace/fhj.swengb2017.assignments/calculator/timesheet-calculator.adoc")
 
   "A timesheet" should {
     "exists" in {
@@ -20,7 +20,7 @@ class TimesheetSpec extends WordSpecLike {
 
       val expected: String =
         """== Time expenditure: Calculator assignment
-          |
+          |s
           |[cols="1,1,4", options="header"]
           |.Time expenditure
           ||===
