@@ -2,19 +2,34 @@
 // see http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
 
 #calculator {
-	-fx-background-color:#00ff00;
+	-fx-background-color:#7e7e7e;
 }
 
 #calculator .darkgrey{
-    -fx-background-color:#7e7e7e;
+    -fx-background-color: #7e7e7e;
 }
 
 #calculator .grey {
-	-fx-background-color:#dadada;
-	-fx-border-color:#7e7e7e;
+	-fx-background-color: #dadada;
+	-fx-border-color: #7e7e7e;
+	-fx-border-width: 1pt;
+}
+
+#calculator .grey:hover {
+    -fx-background-color: #bababa;
 }
 
 #calculator .orange {
-    -fx-background-color:#ff802b;
-    -fx-border-color:#7e7e7e;
+    -fx-background-color: #ff802b;
+    -fx-border-color: #7e7e7e;
+    -fx-border-width: 1pt;
 }
+
+#calculator .orange:hover {
+    -fx-background-color: #fe7010;
+}
+
+
+
+
+

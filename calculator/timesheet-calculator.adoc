@@ -21,13 +21,16 @@
 | Make TimesheetSpec
 
 | 09.12.17
-| 4
+| 2
 | Try to solve RpnCalculator
 
 | 9.12.17
-| 1807
+| 3
 | implement RpnCalculator in Buttons
 
+| 10.12.17
+| 3
+| implement RpnCalculator in Buttons
 
 
 |===
