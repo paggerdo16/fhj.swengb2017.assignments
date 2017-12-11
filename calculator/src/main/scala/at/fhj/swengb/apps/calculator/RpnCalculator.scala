@@ -15,15 +15,10 @@ object RpnCalculator {
     * @return
     */
   def apply(s: String): Try[RpnCalculator] = {
-
     if (s.isEmpty) {
       Try(RpnCalculator())}
     else {
-      val temporaryStack: List[Op] = s.split(' ').map(n => Op(n)).toList
-      var calcul1 = RpnCalculator()
-      calcul1 = calcul1.push(temporaryStack).get
-
-      Try(calcul1)
+      RpnCalculator().push(s.split(' ').map(n => Op(n)).toList)
     }
   }
 
@@ -44,16 +39,14 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @return
     */
   def push(op: Op): Try[RpnCalculator] = {
-
-
     if (op.isInstanceOf[Val]) {
-      Try(RpnCalculator(op :: stack))
+      Try(RpnCalculator(op +: stack))
     }
     else {
-      val first: Val = stack.head.asInstanceOf[Val]
-      val second: Val = stack.tail.head.asInstanceOf[Val]
-      val result: Val = op.asInstanceOf[BinOp].eval(second, first)
-      Try(RpnCalculator(result :: stack.drop(2)))
+      val numberOne: Val = stack.head.asInstanceOf[Val]
+      val numberTwo: Val = stack.tail.head.asInstanceOf[Val]
+      val end: Val = op.asInstanceOf[BinOp].eval(numberTwo, numberOne)
+      Try(RpnCalculator(end +: stack.drop(2)))
     }
   }
 
@@ -67,11 +60,7 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     */
   def push(op: Seq[Op]): Try[RpnCalculator] = {
 
-    var calcul2 = RpnCalculator()
-    for (n <- op) {
-      calcul2 = calcul2.push(n).get
-    }
-    Try(calcul2)
+    Try(op.foldLeft(RpnCalculator())((acc, value) => acc.push(value).get))
   }
 
   /**

@@ -63,22 +63,12 @@ class CalculatorFxController extends Initializable {
 
   }
 
-  def calcul() : Unit = {
+  def enter() : Unit = {
     getCalculator().push(Op(TextField3.getText)) match {
 
       case Success(c) => setCalculator(c)
-      case Failure(e) => /* warning
+      case Failure(e) =>
 
-      /*  Wenn Stack size kleiner als 2 --> textOne nicht befüllen
-      if (getCalculator().stack.size < 2)      {
-        (textTwo.setText(getCalculator().stack(0).toString.drop(4).init))
-        textThree.setText("")
-      }
-      else {
-      }
-
-    */
-    */
     }
 
     getCalculator().stack foreach println
@@ -88,6 +78,8 @@ class CalculatorFxController extends Initializable {
     (TextField1.setText(getCalculator().stack(1).toString.drop(4).init))
     TextField3.setText("")
   }
+
+  // Buttons 1-9
 
   def eins() : Unit = {
     TextField3.appendText("1")
@@ -129,6 +121,8 @@ class CalculatorFxController extends Initializable {
     TextField3.appendText("0")
   }
 
+  // mathematical operations
+
   def plus() : Unit = {
     TextField3.appendText("+")
   }
@@ -137,23 +131,37 @@ class CalculatorFxController extends Initializable {
     TextField3.appendText("-")
   }
 
-  def mal() : Unit = {
+  def multiply() : Unit = {
     TextField3.appendText("*")
   }
 
-  def div() : Unit = {
+  def division() : Unit = {
     TextField3.appendText("/")
   }
+
+  // other functions
 
   def comma() : Unit = {
     TextField3.appendText(".")
   }
 
   def sign() : Unit = {
-    TextField3.appendText("")
+    if (TextField3.getText().head == '-') {
+      TextField3.setText(TextField3.getText.tail)
+    }
+    else {
+      TextField3.setText("-" ++ TextField3.getText)
+    }
   }
 
-  def sgn() : Unit = {
-    println("an event has happend")
+  def clear() : Unit = {
+    if (TextField3.getText.nonEmpty) {
+      TextField3.setText("")
+    }
+    else {
+      TextField2.setText("")
+      TextField1.setText("")
+      setCalculator(RpnCalculator())
+    }
   }
 }

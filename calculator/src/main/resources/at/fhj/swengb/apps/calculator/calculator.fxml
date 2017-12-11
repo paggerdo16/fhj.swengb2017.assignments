@@ -34,7 +34,7 @@
          </font></TextField>
 
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="Clear" GridPane.columnIndex="2" GridPane.rowIndex="6">
+        <Button mnemonicParsing="false" onAction="#clear" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="Clear" GridPane.columnIndex="2" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
@@ -54,7 +54,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#sgn" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="+/-" GridPane.columnIndex="4" GridPane.rowIndex="6">
+        <Button mnemonicParsing="false" onAction="#sign" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="+/-" GridPane.columnIndex="4" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
@@ -99,12 +99,12 @@
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#div" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="÷" GridPane.columnIndex="8" GridPane.rowIndex="6">
+        <Button mnemonicParsing="false" onAction="#division" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="÷" GridPane.columnIndex="8" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" top="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#mal" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="x" GridPane.columnIndex="8" GridPane.rowIndex="8">
+        <Button mnemonicParsing="false" onAction="#multiply" prefHeight="100.0" prefWidth="125.0" styleClass="notnumbers" text="x" GridPane.columnIndex="8" GridPane.rowIndex="8">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
@@ -119,7 +119,7 @@
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
 
-        <Button mnemonicParsing="false" onAction="#calcul" prefHeight="82.0" prefWidth="252.0" styleClass="notnumbers" text="enter" GridPane.columnIndex="6" GridPane.columnSpan="2147483647" GridPane.rowIndex="14">
+        <Button mnemonicParsing="false" onAction="#enter" prefHeight="82.0" prefWidth="252.0" styleClass="notnumbers" text="enter" GridPane.columnIndex="6" GridPane.columnSpan="2147483647" GridPane.rowIndex="14">
          <GridPane.margin>
             <Insets bottom="5.0" right="5.0" />
          </GridPane.margin></Button>
