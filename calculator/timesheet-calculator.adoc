@@ -24,13 +24,18 @@
 | 2
 | Try to solve RpnCalculator
 
-| 9.12.17
+| 09.12.17
 | 3
 | implement RpnCalculator in Buttons
 
 | 10.12.17
 | 3
 | implement RpnCalculator in Buttons
+
+| 12.12.17
+| 4
+| redesign Calculator and finish it
+
 
 
 |===

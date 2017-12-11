@@ -3,10 +3,13 @@ package at.fhj.swengb.apps.calculator
 import java.net.URL
 import java.util.ResourceBundle
 import javafx.application.Application
-import javafx.fxml.{FXMLLoader, Initializable}
+import javafx.beans.property.{ObjectProperty, SimpleObjectProperty}
+import javafx.fxml.{FXML, FXMLLoader, Initializable}
+import javafx.scene.control.TextField
 import javafx.scene.{Parent, Scene}
 import javafx.stage.Stage
 
+import scala.util.{Failure, Success}
 import scala.util.control.NonFatal
 
 object CalculatorApp {
@@ -19,7 +22,7 @@ object CalculatorApp {
 class CalculatorFX extends javafx.application.Application {
 
   val fxml = "/at/fhj/swengb/apps/calculator/calculator.fxml"
-  val css =  "/at/fhj/swengb/apps/calculator/calculator.css"
+  val css = "/at/fhj/swengb/apps/calculator/calculator.css"
 
   def mkFxmlLoader(fxml: String): FXMLLoader = {
     new FXMLLoader(getClass.getResource(fxml))
@@ -46,87 +49,147 @@ class CalculatorFX extends javafx.application.Application {
 }
 
 class CalculatorFxController extends Initializable {
+
+  val calculatorProperty: ObjectProperty[RpnCalculator] = new SimpleObjectProperty[RpnCalculator](RpnCalculator())
+
+  def getCalculator(): RpnCalculator = calculatorProperty.get()
+
+  def setCalculator(rpnCalculator: RpnCalculator): Unit = calculatorProperty.set(rpnCalculator)
+
+  @FXML var Text1: TextField = _
+  @FXML var Text2: TextField = _
+  @FXML var Textlast: TextField = _
+
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
 
-  def one() : Unit = {
-    println("an event has happened")
+  def one(): Unit = {
+    Text1.appendText("1")
   }
 
-  def two() : Unit = {
-    println("an event has happened")
+  def two(): Unit = {
+    Text1.appendText("2")
   }
 
-  def three() : Unit = {
-    println("an event has happened")
+  def three(): Unit = {
+    Text1.appendText("3")
+
   }
 
-  def four() : Unit = {
-    println("an event has happened")
+  def four(): Unit = {
+    Text1.appendText("4")
+
   }
 
-  def five() : Unit = {
-    println("an event has happened")
+  def five(): Unit = {
+    Text1.appendText("5")
+
   }
 
-  def six() : Unit = {
-    println("an event has happened")
+  def six(): Unit = {
+    Text1.appendText("6")
+
   }
 
-  def seven() : Unit = {
-    println("an event has happened")
+  def seven(): Unit = {
+    Text1.appendText("7")
+
   }
 
-  def eight() : Unit = {
-    println("an event has happened")
+  def eight(): Unit = {
+    Text1.appendText("8")
+
   }
 
-  def nine() : Unit = {
-    println("an event has happened")
+  def nine(): Unit = {
+    Text1.appendText("9")
+
   }
 
-  def zero() : Unit = {
-    println("an event has happened")
+  def zero(): Unit = {
+    Text1.appendText("0")
+
   }
 
-  def plus() : Unit = {
-    println("an event has happened")
+  def plus(): Unit = {
+    if (getCalculator().stack.size < 2) {
+      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    } else {
+      Text1.appendText("+")
+      enter()
+    }
   }
 
-  def minus() : Unit = {
-    println("an event has happened")
+  def minus(): Unit = {
+    if (getCalculator().stack.size < 2) {
+      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    } else {
+      Text1.appendText("-")
+      enter()
+    }
   }
 
-  def divide() : Unit = {
-    println("an event has happened")
+  def divide(): Unit = {
+    if (getCalculator().stack.size < 2) {
+      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    } else {
+      Text1.appendText("/")
+      enter()
+    }
   }
 
-  def multiply() : Unit = {
-    println("an event has happened")
+  def multiply(): Unit = {
+    if (getCalculator().stack.size < 2) {
+      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    } else {
+      Text1.appendText("*")
+      enter()
+    }
   }
 
-  def enter() : Unit = {
-    println("an event has happened")
+  def enter(): Unit = {
+    getCalculator().push(Op(Text1.getText)) match {
+      case Success(s) => setCalculator(s)
+      case Failure(f) => println(f.toString)
+    }
+    if (getCalculator().stack.size == 1) {
+      Textlast.setText("")
+      Text1.setText("")
+      Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+    } else {
+      Text1.setText("")
+      Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+      Textlast.setText(getCalculator().stack.init.last.toString.init.drop(4))
+    }
   }
 
-  def next() : Unit = {
-    println("an event has happened")
+  def point(): Unit = {
+    if (Text1.getText.isEmpty || Text1.getText.contains(".")) {
+      Text1.setText(Text1.getText)
+    } else {
+      Text1.setText(Text1.getText + ".")
+    }
   }
 
-  def point() : Unit = {
-    println("an event has happened")
+  def clear(): Unit = {
+    if (Text1.getText.isEmpty) {
+      Text2.setText("")
+      Textlast.setText("")
+      setCalculator(RpnCalculator())
+    } else {
+      Text1.setText("")
+    }
   }
 
-  def clear() : Unit = {
-    println("an event has happened")
-  }
+  def invert(): Unit = {
+    if (Text1.getText.isEmpty) {
+      Textlast.setText("Zuerst muss eine Zahl eingegeben werden!")
+    } else if (Text1.getText.head == '-') {
+      Text1.setText(Text1.getText.tail)
+    } else {
+      Text1.setText("-" + Text1.getText)
 
-  def invert() : Unit = {
-    println("an event has happened")
-  }
-
-  def percent() : Unit = {
-    println("an event has happened")
+    }
   }
 }
