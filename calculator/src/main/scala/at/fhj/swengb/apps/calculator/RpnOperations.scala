@@ -10,7 +10,7 @@ object Op {
   /**
     * A convenience constructor to create an Op from a string. No error handling is performed.
     *
-    * @param s
+    * @param s String represents function
     * @return
     */
   def apply(s: String): Op = {
@@ -22,13 +22,12 @@ object Op {
       case value => Val(value.toDouble)
     }
   }
-
 }
 
 /**
   * A class representing a number which can be used in the RPN.
   *
-  * @param value
+  * @param value Concrete value of instance Val
   */
 case class Val(value: Double) extends Op
 
@@ -47,11 +46,17 @@ case object Mul extends BinOp {
 }
 
 /**
-  * A case class representing division. Be aware that you have to think about the division through zero. In this case,
-  * a Val(Double.NaN) shoudl be returned.
+  * A case class representing division.
+  * Be aware that you have to think about the division through zero. In this case,
+  * a Val(Double.NaN) should be returned.
   */
 case object Div extends BinOp {
-  override def eval(left: Val, right: Val): Val = ???
+  override def eval(left: Val, right: Val): Val = {
+    if (right.value.equals(0.0))
+      Val(Double.NaN)
+    else
+      Val(left.value / right.value)
+  }
 }
 
 /**
@@ -67,3 +72,4 @@ case object Add extends BinOp {
 case object Sub extends BinOp {
   override def eval(left: Val, right: Val): Val = Val(left.value - right.value)
 }
+
