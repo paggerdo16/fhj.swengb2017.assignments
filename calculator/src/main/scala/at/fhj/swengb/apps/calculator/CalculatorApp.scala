@@ -113,38 +113,78 @@ class CalculatorFxController extends Initializable {
   }
 
   def plus(): Unit = {
-    if (getCalculator().stack.size < 2) {
-      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("+")
+        enter()
+      }
     } else {
-      Text1.appendText("+")
-      enter()
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("+")
+        enter()
+      }
     }
   }
 
   def minus(): Unit = {
-    if (getCalculator().stack.size < 2) {
-      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("-")
+        enter()
+      }
     } else {
-      Text1.appendText("-")
-      enter()
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("-")
+        enter()
+      }
     }
   }
 
   def divide(): Unit = {
-    if (getCalculator().stack.size < 2) {
-      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("/")
+        enter()
+      }
     } else {
-      Text1.appendText("/")
-      enter()
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("/")
+        enter()
+      }
     }
   }
 
   def multiply(): Unit = {
-    if (getCalculator().stack.size < 2) {
-      Textlast.setText("Zu wenig Zahlen sind am Stack")
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("*")
+        enter()
+      }
     } else {
-      Text1.appendText("*")
-      enter()
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("*")
+        enter()
+      }
     }
   }
 
