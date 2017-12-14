@@ -10,7 +10,7 @@ import scala.collection.JavaConverters._
 class TimesheetSpec extends WordSpecLike {
 
 
-  val p: Path = Paths.get("C:\\workspace\\fhj.swengb2017.assignments\\calculator\\timesheet-calculator.adoc")
+  val p: Path = Paths.get("timesheet-calculator.adoc")
 
   "A timesheet" should {
     "exists" in {
