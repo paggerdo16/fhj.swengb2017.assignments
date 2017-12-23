@@ -26,7 +26,7 @@ case class BattleShipGame(battleField: BattleField,
   private val cells: Seq[BattleFxCell] = for {x <- 0 until battleField.width
                                               y <- 0 until battleField.height
                                               pos = BattlePos(x, y)} yield {
-    BattleFxCell(BattlePos(x, y),
+      BattleFxCell(BattlePos(x, y),
       getCellWidth(x),
       getCellHeight(y),
       log,

@@ -16,8 +16,8 @@ object BattleshipGameGen {
       width <- Gen.chooseNum(1, maxX)
       height <- Gen.chooseNum(1, maxY)
       fleet <- fleetGen
-      getCellWidth <-
-      getCellHeight <-
+      getCellWidth <- battlePosGen
+      getCellHeight <- battlePosGen
       log <-
   } yield BattleshipGame(BattleField, getCellWidth, getCellHeight, log)
 
