@@ -13,7 +13,7 @@
 | 22.12.17
 | 1
 | 1
-| implement BattleShipProtobuf.proto
+| implement BattleShipProtobuf.proto & BattleshipGameGen
 
 | Arneitzj15
 | 30.11.17
