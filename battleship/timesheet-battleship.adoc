@@ -9,11 +9,11 @@
 | Actual Hours
 | Description
 
-| Arneitzj15
-| 29.11.17
-| 2
+| neumannn16
+| 22.12.17
 | 1
-| Review of this and that
+| 1
+| implement BattleShipProtobuf.proto & BattleshipGameGen
 
 | Arneitzj15
 | 30.11.17
