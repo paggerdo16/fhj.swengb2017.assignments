@@ -1,12 +1,16 @@
 package at.fhj.swengb.apps.battleship.model
 
+import javafx.event.Event
+import javafx.scene.input.MouseEvent
+
 /**
   * Contains all information about a battleship game.
   */
 case class BattleShipGame(battleField: BattleField,
                           getCellWidth: Int => Double,
                           getCellHeight: Int => Double,
-                          log: String => Unit) {
+                          log: String => Unit,
+                          updateSlider: Int => Unit) {
 
   /**
     * remembers which vessel was hit at which position
@@ -14,6 +18,9 @@ case class BattleShipGame(battleField: BattleField,
     *
     **/
   var hits: Map[Vessel, Set[BattlePos]] = Map()
+
+
+  var alreadyClicked : List[BattlePos] = List()
 
   /**
     * contains all vessels which are destroyed
@@ -31,10 +38,25 @@ case class BattleShipGame(battleField: BattleField,
       getCellHeight(y),
       log,
       battleField.fleet.findByPos(pos),
-      updateGameState)
+      updateGameState,
+      hit)
   }
 
-  def getCells(): Seq[BattleFxCell] = cells
+  def hit(pos:BattlePos):Unit = {
+    if(!alreadyClicked.contains(pos))
+      alreadyClicked = alreadyClicked :+ pos
+    updateSlider(alreadyClicked.length)
+  }
+
+  def refresh(x:Int) : Unit = {
+    println("refresh")
+    alreadyClicked.take(x).foreach((pos) => {
+      println("shot " ++ pos.toString)
+      cells(pos.x*battleField.width + pos.y).getOnMouseClicked.handle(null)
+    })
+  }
+
+  def getCells: Seq[BattleFxCell] = cells
 
 
   def updateGameState(vessel: Vessel, pos: BattlePos): Unit = {

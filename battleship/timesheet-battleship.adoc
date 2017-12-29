@@ -9,22 +9,58 @@
 | Actual Hours
 | Description
 
-| Arneitzj15
-| 29.11.17
+| neumannn16
+| 22.12.17
+| 1
+| 1
+| implement BattleShipProtobuf.proto & BattleshipGameGen
+
+| neumannn16
+| 23.12.17
+| 3
+| 2
+| implemented converters
+
+| puetzlma16
+| 23.12.17
 | 2
 | 1
-| Review of this and that
+| implement load and save buttons
 
-| Arneitzj15
-| 30.11.17
+| puetzlma16
+| 25.12.17
 | 1
+| 2
+| implemented fxml
+
+| neumannn16
+| 25.12.17
+| 2
+| 3
+| implement css
+
+| puetzlma16
+| 28.12.17
 | 5
-| implemented css
+| 6
+| implement replay slider
 
-| Heiderst16
-| 11.07.17
+| neumannn16
+| 28.12.17
 | 2
-| 2
-| fixed bugs
+| 1.5
+| implement converter spec
+
+| neumannn16 & puetzlma16
+| 29.12.17
+| 1
+| 4
+| fixing bugs
+
+| neumannn16
+| 29.12.17
+| 0.5
+| 1
+| created THE nicest background image with photoshop
 
 |===

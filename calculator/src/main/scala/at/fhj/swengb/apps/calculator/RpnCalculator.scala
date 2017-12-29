@@ -1,7 +1,5 @@
 package at.fhj.swengb.apps.calculator
 
-import java.util.NoSuchElementException
-
 import scala.util.Try
 
 /**
@@ -17,18 +15,29 @@ object RpnCalculator {
     * @return
     */
   def apply(s: String): Try[RpnCalculator] = {
-    if (s.isEmpty)
+    val listOfOp = "+-/*"
+    if (s.isEmpty) {
       Try(RpnCalculator())
+    }
     else {
-      try {
-        val myStack = s.split(" ").toList.map((value)=>Op(value))
-        RpnCalculator().push(myStack)
-      } catch {
-        case e: Exception => Try[RpnCalculator](throw e)
+      if (listOfOp.contains(s.head)) {
+        Try[RpnCalculator](throw new NoSuchElementException)
+      }
+      else {
+        try {
+          val liste: List[Op] = s.split(' ').map(x => Op(x)).toList
+
+          liste.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
+        }
+        catch {
+          case fail: Exception => Try[RpnCalculator](throw fail)
+        }
       }
     }
   }
+
 }
+
 /**
   * Reverse Polish Notation Calculator.
   *
@@ -37,35 +46,36 @@ object RpnCalculator {
 case class RpnCalculator(stack: List[Op] = Nil) {
 
   /**
-    * By pushing Op on the stack, the Op is potentially executed. If it is a Val,  the op instance
-    * is just put on the stack,
-    * if not then the stack is examined and the correct operation is performed.
+    * By pushing Op on the stack, the Op is potentially executed. If it is a Val, it the op instance is just put on the
+    * stack, if not then the stack is examined and the correct operation is performed.
     *
-    * @param op - New Value or Operation added to to stack
+    * @param op
     * @return
     */
   def push(op: Op): Try[RpnCalculator] = {
     op match {
       case value: Val => Try(RpnCalculator(stack :+ value))
-      case op: BinOp =>
-        try {
-          def getVal(Cal: RpnCalculator): Val = {
-            val myVal = Cal.peek()
-            myVal match {
-              case v: Val   => v
-              case _: BinOp => throw new NoSuchElementException
-            }
+      case operation: BinOp => {
+        def getVal(smthng: RpnCalculator): Val = {
+          val gottenVal = smthng.peek()
+          gottenVal match {
+            case value: Val => value
+            case _ => throw new NoSuchElementException
           }
-          val fstVal = getVal(RpnCalculator.this)
-          var myCalc = pop()._2
-
-          val sndVal = getVal(myCalc)
-          myCalc = myCalc.pop()._2
-
-          val result: Val = op.eval(fstVal, sndVal)
-          myCalc.push(result)
         }
+
+        val firstPart = getVal(this)
+        var restStack: RpnCalculator = pop()._2
+        val sndPart = getVal(restStack)
+        restStack = restStack.pop()._2
+
+        val result = operation.eval(firstPart, sndPart)
+
+        restStack.push(result)
+      }
     }
+
+
   }
 
   /**
@@ -73,29 +83,32 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     *
     * If op is not a val, pop two numbers from the stack and apply the operation.
     *
-    * @param op New op instance to add to calc
+    * @param op
     * @return
     */
-  def push(op: Seq[Op]): Try[RpnCalculator] = op.foldLeft(Try(RpnCalculator()))((acc, elem) => acc.get.push(elem))
+  def push(op: Seq[Op]): Try[RpnCalculator] = {
+    op.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
+  }
 
   /**
-    * Returns an tuple of Op and a RpnCalculator instance with the remainder of the stack.
+    * Returns an tuple of Op and a RevPolCal instance with the remainder of the stack.
     *
     * @return
     */
   def pop(): (Op, RpnCalculator) = (stack.head, RpnCalculator(stack.tail))
 
   /**
-    * If stack is nonempty, returns the top of the stack.
-    * If it is empty, this function throws a NoSuchElementException.
+    * If stack is nonempty, returns the top of the stack. If it is empty, this function throws a NoSuchElementException.
     *
     * @return
     */
   def peek(): Op = {
-    if (stack.isEmpty)
-      throw new NoSuchElementException
-    else
+    if (stack.isEmpty) {
+      throw new NoSuchElementException("List must have values in it!!!")
+    }
+    else {
       stack.head
+    }
   }
 
   /**

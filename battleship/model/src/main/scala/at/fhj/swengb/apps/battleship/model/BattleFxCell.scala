@@ -2,6 +2,7 @@ package at.fhj.swengb.apps.battleship.model
 
 import javafx.scene.paint.Color
 import javafx.scene.shape.Rectangle
+import at.fhj.swengb.apps.battleship._
 ;
 
 /**
@@ -14,25 +15,27 @@ case class BattleFxCell(pos: BattlePos
                         , log: String => Unit
                         , someVessel: Option[Vessel] = None
                         , fn: (Vessel, BattlePos) => Unit
-                        ) extends Rectangle(width, height) {
+                        , hit: (BattlePos) => Unit
+                       ) extends Rectangle(width, height) {
 
   def init(): Unit = {
     if (someVessel.isDefined) {
       setFill(Color.YELLOWGREEN)
     } else {
-      setFill(Color.BLUE)
+      setFill(Color.NAVY)
     }
   }
 
   setOnMouseClicked(e => {
+    hit(pos)
     someVessel match {
       case None =>
         log(s"Missed. Just hit water.")
-        setFill(Color.AQUAMARINE)
+        setFill(Color.DEEPSKYBLUE)
       case Some(v) =>
-        // log(s"Hit an enemy vessel!")
+        log(s"Hit an enemy vessel!")
         fn(v, pos)
-        setFill(Color.RED)
+        setFill(Color.CRIMSON)
     }
   })
 
