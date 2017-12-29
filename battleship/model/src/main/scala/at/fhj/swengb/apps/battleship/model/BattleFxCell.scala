@@ -22,7 +22,7 @@ case class BattleFxCell(pos: BattlePos
     if (someVessel.isDefined) {
       setFill(Color.YELLOWGREEN)
     } else {
-      setFill(Color.BLUE)
+      setFill(Color.NAVY)
     }
   }
 
@@ -31,11 +31,11 @@ case class BattleFxCell(pos: BattlePos
     someVessel match {
       case None =>
         log(s"Missed. Just hit water.")
-        setFill(Color.AQUAMARINE)
+        setFill(Color.CADETBLUE)
       case Some(v) =>
         log(s"Hit an enemy vessel!")
         fn(v, pos)
-        setFill(Color.RED)
+        setFill(Color.CRIMSON)
     }
   })
 
