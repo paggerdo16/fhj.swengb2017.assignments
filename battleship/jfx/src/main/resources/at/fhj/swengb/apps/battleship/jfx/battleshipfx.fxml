@@ -19,9 +19,9 @@
     <rowConstraints>
         <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="600.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="550.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
-        <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
         <Label alignment="CENTER" minWidth="300.0" prefHeight="80.0" prefWidth="600.0" text="Battleship" GridPane.columnSpan="2147483647">
