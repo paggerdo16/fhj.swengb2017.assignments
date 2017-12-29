@@ -55,7 +55,6 @@
 
 .gridpane {
     -fx-background-image: url("Sea-water.jpg");
-//-fx-cursor: url("bomb1.jpg");
 }
 
 .battleship {
