@@ -51,4 +51,10 @@
 | 1.5
 | implement converter spec
 
+| neumannn16 & puetzlma16
+| 29.12.17
+| 1
+| 4
+| fixing bugs
+
 |===
