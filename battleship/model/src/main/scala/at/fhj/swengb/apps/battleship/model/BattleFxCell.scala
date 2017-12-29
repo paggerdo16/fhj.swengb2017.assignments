@@ -31,7 +31,7 @@ case class BattleFxCell(pos: BattlePos
     someVessel match {
       case None =>
         log(s"Missed. Just hit water.")
-        setFill(Color.CADETBLUE)
+        setFill(Color.DEEPSKYBLUE)
       case Some(v) =>
         log(s"Hit an enemy vessel!")
         fn(v, pos)
