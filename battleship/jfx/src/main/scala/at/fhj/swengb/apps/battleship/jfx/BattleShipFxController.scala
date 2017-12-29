@@ -15,7 +15,7 @@ import at.fhj.swengb.apps.battleship.model.{BattleField, BattleShipGame, Fleet, 
 class BattleShipFxController extends Initializable {
 
 
-  @FXML private var battleGroundGridPane: GridPane = _
+  @FXML private var gridPane: GridPane = _
   var bsGame: BattleShipGame = _
 
   /**
@@ -37,7 +37,7 @@ class BattleShipFxController extends Initializable {
     println("Wrote to " + path.toAbsolutePath.toString)
   }
 
-  def slided(): Unit = {
+  def sliding(): Unit = {
     init(bsGame)
     bsGame.refresh(slider.getValue.toInt)
     println(slider.getValue.toString)
@@ -59,9 +59,9 @@ class BattleShipFxController extends Initializable {
 
   override def initialize(url: URL, rb: ResourceBundle): Unit = initGame()
 
-  private def getCellHeight(y: Int): Double = battleGroundGridPane.getRowConstraints.get(y).getPrefHeight
+  private def getCellHeight(y: Int): Double =gridPane.getRowConstraints.get(y).getPrefHeight
 
-  private def getCellWidth(x: Int): Double = battleGroundGridPane.getColumnConstraints.get(x).getPrefWidth
+  private def getCellWidth(x: Int): Double = gridPane.getColumnConstraints.get(x).getPrefWidth
 
   def appendLog(message: String): Unit = log.appendText(message + "\n")
 
@@ -76,9 +76,9 @@ class BattleShipFxController extends Initializable {
     */
   def init(game : BattleShipGame) : Unit = {
     bsGame = game
-    battleGroundGridPane.getChildren.clear()
+    gridPane.getChildren.clear()
     for (c <- game.getCells) {
-      battleGroundGridPane.add(c, c.pos.x, c.pos.y)
+      gridPane.add(c, c.pos.x, c.pos.y)
     }
     game.getCells.foreach(c => c.init())
   }
