@@ -15,16 +15,40 @@
 | 1
 | implement BattleShipProtobuf.proto & BattleshipGameGen
 
-| Arneitzj15
-| 30.11.17
-| 1
-| 5
-| implemented css
+| neumannn16
+| 23.12.17
+| 3
+| 2
+| implemented converters
 
-| Heiderst16
-| 11.07.17
+| puetzlma16
+| 23.12.17
 | 2
+| 1
+| implement load and save buttons
+
+| puetzlma16
+| 25.12.17
+| 1
 | 2
-| fixed bugs
+| implemented fxml
+
+| neumannn16
+| 25.12.17
+| 2
+| 3
+| implement css
+
+| puetzlma16
+| 28.12.17
+| 5
+| 6
+| implement replay slider
+
+| neumannn16
+| 28.12.17
+| 2
+| 1.5
+| implement converter spec
 
 |===

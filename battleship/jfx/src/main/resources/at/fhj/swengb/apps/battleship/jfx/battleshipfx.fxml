@@ -29,9 +29,9 @@
                 <Font size="34.0" />
             </font>
         </Label>
-        <Button fx:id="button1" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" styleClass="newGameButton" text="New Game" GridPane.rowIndex="1" />
-        <Button fx:id="button2" mnemonicParsing="false" onAction="#loadGame" prefHeight="80.0" prefWidth="200.0" styleClass="loadGameButton" text="Load Game" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-        <Button fx:id="button3" mnemonicParsing="false" onAction="#saveGame" prefHeight="80.0" prefWidth="200.0" styleClass="saveGameButton" text="Save Game" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" styleClass="newGameButton" text="New Game" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#loadGame" prefHeight="80.0" prefWidth="200.0" styleClass="loadGameButton" text="Load Game" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button mnemonicParsing="false" onAction="#saveGame" prefHeight="80.0" prefWidth="200.0" styleClass="saveGameButton" text="Save Game" GridPane.columnIndex="2" GridPane.rowIndex="1" />
         <TextArea fx:id="log" maxHeight="200.0" maxWidth="600.0" prefHeight="200.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
         <GridPane fx:id="battleGroundGridPane" hgap="10.0" styleClass="gridpane" vgap="10.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
             <columnConstraints>
