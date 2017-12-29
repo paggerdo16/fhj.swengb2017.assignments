@@ -16,7 +16,7 @@ message BattleField {
     int32 width = 2;
     Fleet fleet = 3;
 }
-// consists of a list of vessels
+// consists of a list of vessel
 message Fleet {
     repeated Vessel vessel = 1;
 }
