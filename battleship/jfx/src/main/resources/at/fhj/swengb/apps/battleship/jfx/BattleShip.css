@@ -1,72 +1,45 @@
 
 #battleShip {
-    //-fx-background-color:#ff6600;
+    //-fx-background-color:#ffffff;
 }
 
 .newGameButton {
-    -fx-color: #3e4142;
+    -fx-color: #3e4145;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-}
-
-.newGameButton:hover {
-    -fx-color: #535556;
-    -fx-border-color: #535556;
-    -fx-text-fill: white;
-}
-.newGameButton:pressed {
-    -fx-color: #2f3233;
-    -fx-border-color: #2f3233;
-    -fx-text-fill: white;
+    -fx-font-size: 20px;
 }
 
 .loadGameButton {
-    -fx-color: #3e4142;
+    -fx-color: #3e4145;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-}
-
-.loadGameButton:hover {
-    -fx-color: #535556;
-    -fx-border-color: #535556;
-    -fx-text-fill: white;
-}
-.loadGameButton:pressed {
-    -fx-color: #2f3233;
-    -fx-border-color: #2f3233;
-    -fx-text-fill: white;
+    -fx-font-size: 20px;
 }
 
 .saveGameButton {
-    -fx-color: #3e4142;
+    -fx-color: #3e4145;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
-    -fx-font-size: 14px;
-}
-
-.saveGameButton:hover {
-    -fx-color: #535556;
-    -fx-border-color: #535556;
-    -fx-text-fill: white;
-}
-.saveGameButton:pressed {
-    -fx-color: #2f3233;
-    -fx-border-color: #2f3233;
-    -fx-text-fill: white;
+    -fx-font-size: 20px;
 }
 
 .gridPane {
-    -fx-background-image: url("BattleShipGameRahmen.jpg");
+    -fx-background-image: url("Schlachtschiff.jpg");
     -fx-background-repeat: no-repeat;
-}
-
-.battleShip {
-    -fx-background-image: url("479066843.jpg");
     -fx-text-fill: black;
 }
 
+.battleShip {
+    -fx-background-image: url("wasser.jpg");
+    -fx-background-repeat: no-repeat;
+    -fx-text-fill: black;
+}
+
+.battleShipText {
+    -fx-text-fill: white;
+}
+
 .textField .content{
-    -fx-background-color: #c0c0c0;
+    -fx-background-color: #CED8F6;
 }

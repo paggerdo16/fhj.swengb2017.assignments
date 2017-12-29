@@ -63,18 +63,6 @@ case class BattleShipGame(battleField: BattleField,
     log("Vessel " + vessel.name.value + " was hit at position " + pos)
 
     if (hits.contains(vessel)) {
-      // this code is executed if vessel was already hit at least once
-
-      // pos
-      // vessel
-      // map (hits)
-
-      // we want to update the hits map
-      // the map should be updated if
-      // we hit a vessel which is already contained
-      // in the 'hits' map, and it's values (
-      // the set of BattlePos) should be added
-      // the current pos
       val oldPos: Set[BattlePos] = hits(vessel)
 
       hits = hits.updated(vessel, oldPos + pos)
@@ -96,9 +84,6 @@ case class BattleShipGame(battleField: BattleField,
 
 
     } else {
-      // vessel is not part of the map
-      // but vessel was hit!
-      // it was hit the first time ever!
       hits = hits.updated(vessel, Set(pos))
     }
 

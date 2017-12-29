@@ -20,7 +20,7 @@ case class BattleFxCell(pos: BattlePos
 
   def init(): Unit = {
     if (someVessel.isDefined) {
-      setFill(Color.YELLOWGREEN)
+      setFill(Color.YELLOW)
     } else {
       setFill(Color.NAVY)
     }
@@ -31,7 +31,7 @@ case class BattleFxCell(pos: BattlePos
     someVessel match {
       case None =>
         log(s"Missed. Just hit water.")
-        setFill(Color.DEEPSKYBLUE)
+        setFill(Color.ANTIQUEWHITE)
       case Some(v) =>
         log(s"Hit an enemy vessel!")
         fn(v, pos)
