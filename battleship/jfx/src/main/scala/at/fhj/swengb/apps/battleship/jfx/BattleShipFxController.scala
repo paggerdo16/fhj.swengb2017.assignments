@@ -34,7 +34,7 @@ class BattleShipFxController extends Initializable {
 
     pGame.writeTo(outStream)
 
-    println("Wrote to " + path.toAbsolutePath.toString)
+    println(s"Saved to ${path.toAbsolutePath.toString}")
   }
 
   def sliding(): Unit = {
@@ -52,7 +52,7 @@ class BattleShipFxController extends Initializable {
     val a = BattleShipGame(convert(protoGame).battleField, getCellWidth, getCellHeight, appendLog, updateSlider)
     a.alreadyClicked = convert(protoGame).alreadyClicked
     init(a)
-    println("Read Game from disc")
+    println("Loading... Please hold the line")
     bsGame.refresh(bsGame.alreadyClicked.length)
     slider.setMax(bsGame.alreadyClicked.length)
   }
@@ -86,14 +86,14 @@ class BattleShipFxController extends Initializable {
   private def updateSlider(x:Int):Unit = {
     slider.setMax(x)
     slider.setValue(x)
-    println("x:" ++ x.toString())
+    println(s"Round: ${x.toString()}")
   }
 
 
   private def initGame(): Unit = {
     val game: BattleShipGame = createGame()
     init(game)
-    appendLog("New game started.")
+    appendLog("The Battle begins .... NOW!!!")
   }
 
   private def createGame(): BattleShipGame = {
