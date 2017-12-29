@@ -77,10 +77,10 @@ class BattleShipFxController extends Initializable {
   def init(game : BattleShipGame) : Unit = {
     bsGame = game
     battleGroundGridPane.getChildren.clear()
-    for (c <- game.getCells()) {
+    for (c <- game.getCells) {
       battleGroundGridPane.add(c, c.pos.x, c.pos.y)
     }
-    game.getCells().foreach(c => c.init())
+    game.getCells.foreach(c => c.init())
   }
 
   private def updateSlider(x:Int):Unit = {
