@@ -4,21 +4,21 @@
 }
 
 .newGameButton {
-    -fx-color: #3e4145;
+    -fx-color: #0B0B61;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
     -fx-font-size: 20px;
 }
 
 .loadGameButton {
-    -fx-color: #3e4145;
+    -fx-color: #0B0B61;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
     -fx-font-size: 20px;
 }
 
 .saveGameButton {
-    -fx-color: #3e4145;
+    -fx-color: #0B0B61;
     -fx-border-color: #3e4142;
     -fx-text-fill: white;
     -fx-font-size: 20px;
