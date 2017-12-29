@@ -22,7 +22,7 @@ object CalculatorApp {
 class CalculatorFX extends javafx.application.Application {
 
   val fxml = "/at/fhj/swengb/apps/calculator/calculator.fxml"
-  val css =  "/at/fhj/swengb/apps/calculator/calculator.css"
+  val css = "/at/fhj/swengb/apps/calculator/calculator.css"
 
   def mkFxmlLoader(fxml: String): FXMLLoader = {
     new FXMLLoader(getClass.getResource(fxml))
@@ -51,117 +51,189 @@ class CalculatorFX extends javafx.application.Application {
 class CalculatorFxController extends Initializable {
 
   val calculatorProperty: ObjectProperty[RpnCalculator] = new SimpleObjectProperty[RpnCalculator](RpnCalculator())
-  def getCalculator() : RpnCalculator = calculatorProperty.get()
-  def setCalculator(rpnCalculator : RpnCalculator) : Unit = calculatorProperty.set(rpnCalculator)
 
-  @FXML var TextField1 : TextField = _
-  @FXML var TextField2 : TextField = _
-  @FXML var TextField3 : TextField = _
+  def getCalculator(): RpnCalculator = calculatorProperty.get()
 
+  def setCalculator(rpnCalculator: RpnCalculator): Unit = calculatorProperty.set(rpnCalculator)
+
+  @FXML var Text1: TextField = _
+  @FXML var Text2: TextField = _
+  @FXML var Textlast: TextField = _
 
   override def initialize(location: URL, resources: ResourceBundle) = {
 
   }
 
-  def enter() : Unit = {
-    getCalculator().push(Op(TextField3.getText)) match {
-
-      case Success(c) => setCalculator(c)
-      case Failure(e) =>
-
-    }
-
-    getCalculator().stack foreach println
-
-    (TextField2.setText(getCalculator().stack(0).toString.drop(4).init))
-    TextField3.setText("")
-    (TextField1.setText(getCalculator().stack(1).toString.drop(4).init))
-    TextField3.setText("")
+  def one(): Unit = {
+    Text1.appendText("1")
   }
 
-  // Buttons 1-9
-
-  def eins() : Unit = {
-    TextField3.appendText("1")
+  def two(): Unit = {
+    Text1.appendText("2")
   }
 
-  def zwei() : Unit = {
-    TextField3.appendText("2")
+  def three(): Unit = {
+    Text1.appendText("3")
+
   }
 
-  def drei() : Unit = {
-    TextField3.appendText("3")
+  def four(): Unit = {
+    Text1.appendText("4")
+
   }
 
-  def vier() : Unit = {
-    TextField3.appendText("4")
+  def five(): Unit = {
+    Text1.appendText("5")
+
   }
 
-  def fünf() : Unit = {
-    TextField3.appendText("5")
+  def six(): Unit = {
+    Text1.appendText("6")
+
   }
 
-  def sechs() : Unit = {
-    TextField3.appendText("6")
+  def seven(): Unit = {
+    Text1.appendText("7")
+
   }
 
-  def sieben() : Unit = {
-    TextField3.appendText("7")
+  def eight(): Unit = {
+    Text1.appendText("8")
+
   }
 
-  def acht() : Unit = {
-    TextField3.appendText("8")
+  def nine(): Unit = {
+    Text1.appendText("9")
+
   }
 
-  def neun() : Unit = {
-    TextField3.appendText("9")
+  def zero(): Unit = {
+    Text1.appendText("0")
+
   }
 
-  def zero() : Unit = {
-    TextField3.appendText("0")
-  }
-
-  // mathematical operations
-
-  def plus() : Unit = {
-    TextField3.appendText("+")
-  }
-
-  def minus() : Unit = {
-    TextField3.appendText("-")
-  }
-
-  def multiply() : Unit = {
-    TextField3.appendText("*")
-  }
-
-  def division() : Unit = {
-    TextField3.appendText("/")
-  }
-
-  // other functions
-
-  def comma() : Unit = {
-    TextField3.appendText(".")
-  }
-
-  def sign() : Unit = {
-    if (TextField3.getText().head == '-') {
-      TextField3.setText(TextField3.getText.tail)
-    }
-    else {
-      TextField3.setText("-" ++ TextField3.getText)
+  def plus(): Unit = {
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("+")
+        enter()
+      }
+    } else {
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("+")
+        enter()
+      }
     }
   }
 
-  def clear() : Unit = {
-    if (TextField3.getText.nonEmpty) {
-      TextField3.setText("")
+  def minus(): Unit = {
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("-")
+        enter()
+      }
+    } else {
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("-")
+        enter()
+      }
     }
-    else {
-      TextField2.setText("")
-      TextField1.setText("")
+  }
+
+  def divide(): Unit = {
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("/")
+        enter()
+      }
+    } else {
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("/")
+        enter()
+      }
+    }
+  }
+
+  def multiply(): Unit = {
+    if (Text1.getText.isEmpty) {
+      if (getCalculator().stack.size < 2) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        Text1.setText("*")
+        enter()
+      }
+    } else {
+      if (getCalculator().stack.size < 1) {
+        Textlast.setText("Zu wenig Zahlen sind am Stack")
+      } else {
+        enter()
+        Text1.setText("*")
+        enter()
+      }
+    }
+  }
+
+  def enter(): Unit = {
+    if (Text1.getText.nonEmpty) {
+      getCalculator().push(Op(Text1.getText)) match {
+        case Success(s) => setCalculator(s)
+        case Failure(f) => println(f.toString)
+      }
+      if (getCalculator().stack.size == 1) {
+        Textlast.setText("")
+        Text1.setText("")
+        Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+      } else {
+        Text1.setText("")
+        Text2.setText(getCalculator().stack.last.toString.init.drop(4))
+        Textlast.setText(getCalculator().stack.init.last.toString.init.drop(4))
+      }
+    } else {
+      Textlast.setText("Zuerst muss eine Zahl eingegeben werden!")
+    }
+  }
+
+  def point(): Unit = {
+    if (Text1.getText.isEmpty || Text1.getText.contains(".")) {
+      Text1.setText(Text1.getText)
+    } else {
+      Text1.setText(Text1.getText + ".")
+    }
+  }
+
+  def clear(): Unit = {
+    if (Text1.getText.isEmpty) {
+      Text2.setText("")
+      Textlast.setText("")
       setCalculator(RpnCalculator())
+    } else {
+      Text1.setText("")
+    }
+  }
+
+  def invert(): Unit = {
+    if (Text1.getText.isEmpty) {
+      Textlast.setText("Zuerst muss eine Zahl eingegeben werden!")
+    } else if (Text1.getText.head == '-') {
+      Text1.setText(Text1.getText.tail)
+    } else {
+      Text1.setText("-" + Text1.getText)
+
     }
   }
 }

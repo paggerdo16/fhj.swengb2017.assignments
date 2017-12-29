@@ -15,10 +15,24 @@ object RpnCalculator {
     * @return
     */
   def apply(s: String): Try[RpnCalculator] = {
+    val listOfOp = "+-/*"
     if (s.isEmpty) {
-      Try(RpnCalculator())}
+      Try(RpnCalculator())
+    }
     else {
-      RpnCalculator().push(s.split(' ').map(n => Op(n)).toList)
+      if (listOfOp.contains(s.head)) {
+        Try[RpnCalculator](throw new NoSuchElementException)
+      }
+      else {
+        try {
+          val liste: List[Op] = s.split(' ').map(x => Op(x)).toList
+
+          liste.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
+        }
+        catch {
+          case fail: Exception => Try[RpnCalculator](throw fail)
+        }
+      }
     }
   }
 
@@ -39,15 +53,29 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @return
     */
   def push(op: Op): Try[RpnCalculator] = {
-    if (op.isInstanceOf[Val]) {
-      Try(RpnCalculator(op +: stack))
+    op match {
+      case value: Val => Try(RpnCalculator(stack :+ value))
+      case operation: BinOp => {
+        def getVal(smthng: RpnCalculator): Val = {
+          val gottenVal = smthng.peek()
+          gottenVal match {
+            case value: Val => value
+            case _ => throw new NoSuchElementException
+          }
+        }
+
+        val firstPart = getVal(this)
+        var restStack: RpnCalculator = pop()._2
+        val sndPart = getVal(restStack)
+        restStack = restStack.pop()._2
+
+        val result = operation.eval(firstPart, sndPart)
+
+        restStack.push(result)
+      }
     }
-    else {
-      val numberOne: Val = stack.head.asInstanceOf[Val]
-      val numberTwo: Val = stack.tail.head.asInstanceOf[Val]
-      val end: Val = op.asInstanceOf[BinOp].eval(numberTwo, numberOne)
-      Try(RpnCalculator(end +: stack.drop(2)))
-    }
+
+
   }
 
   /**
@@ -59,8 +87,7 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     * @return
     */
   def push(op: Seq[Op]): Try[RpnCalculator] = {
-
-    Try(op.foldLeft(RpnCalculator())((acc, value) => acc.push(value).get))
+    op.foldLeft(Try(RpnCalculator()))((acc, x) => acc.get.push(x))
   }
 
   /**
@@ -75,7 +102,14 @@ case class RpnCalculator(stack: List[Op] = Nil) {
     *
     * @return
     */
-  def peek(): Op = if (stack.nonEmpty) stack.head else throw new NoSuchElementException ("Empty List")
+  def peek(): Op = {
+    if (stack.isEmpty) {
+      throw new NoSuchElementException("List must have values in it!!!")
+    }
+    else {
+      stack.head
+    }
+  }
 
   /**
     * returns the size of the stack.

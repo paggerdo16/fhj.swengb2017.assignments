@@ -52,8 +52,13 @@ case object Mul extends BinOp {
   */
 case object Div extends BinOp {
   override def eval(left: Val, right: Val): Val = {
-
-    if (right.value == 0) Val(Double.NaN) else Val(left.value / right.value)
+    if (right.value != 0) {
+      Val(left.value / right.value)
+    }
+    else
+      {
+        Val(Double.NaN)
+      }
   }
 }
 
