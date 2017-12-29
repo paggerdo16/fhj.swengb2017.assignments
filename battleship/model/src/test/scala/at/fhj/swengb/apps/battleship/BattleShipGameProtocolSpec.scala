@@ -13,11 +13,24 @@ class BattleShipProtocolSpec extends WordSpecLike {
   "BattleShipProtocol" should {
     "be deserializable" in {
       val battlefield: BattleField = BattleField(10, 10, Fleet(FleetConfig.Standard))
-      val expected: BattleShipGame = BattleShipGame(battlefield, x => x.toDouble, x => x.toDouble, x => (), x=>())
-      expected.hit(BattlePos(1,2))
-      val actual: BattleShipGame = BattleShipProtocol.convert(BattleShipProtocol.convert(expected))
-      assert(actual.battleField == expected.battleField)
-      assert(actual.alreadyClicked == expected.alreadyClicked)
+      val expectedGame: BattleShipGame = BattleShipGame(battlefield, x => x.toDouble, x => x.toDouble, x => (), x=>())
+      expectedGame.hit(BattlePos(1,2))
+      val actualGame: BattleShipGame = BattleShipProtocol.convert(BattleShipProtocol.convert(expectedGame))
+
+      val expectedVessel: Vessel = Vessel(NonEmptyString("Destroyer"),BattlePos(2,3),Vertical,5)
+      val actualVessel: Vessel = BattleShipProtocol.convert(BattleShipProtocol.convert(expectedVessel))
+
+      val expectedBattlePos = BattlePos(1,2)
+      val actualBattlePos = BattleShipProtocol.convert(BattleShipProtocol.convert(expectedBattlePos))
+
+
+
+      assert(actualGame.battleField == expectedGame.battleField)
+      assert(actualGame.alreadyClicked == expectedGame.alreadyClicked)
+      assert(actualVessel == expectedVessel)
+      assert(actualBattlePos == expectedBattlePos)
+
+
     }
   }
 }
