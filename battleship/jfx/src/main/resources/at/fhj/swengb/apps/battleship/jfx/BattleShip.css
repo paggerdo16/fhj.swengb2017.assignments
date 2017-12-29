@@ -1,76 +1,75 @@
 
-#battleship {
+#battleShip {
     //-fx-background-color:#ff6600;
 }
 
 .newGameButton {
-    -fx-color: #4bcad8;
-    -fx-border-color: #4bcad8;
-    -fx-text-fill: black;
+    -fx-color: #3e4142;
+    -fx-border-color: #3e4142;
+    -fx-text-fill: white;
     -fx-font-size: 14px;
 }
 
 .newGameButton:hover {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #535556;
+    -fx-border-color: #535556;
+    -fx-text-fill: white;
 }
 .newGameButton:pressed {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #2f3233;
+    -fx-border-color: #2f3233;
+    -fx-text-fill: white;
 }
 
 .loadGameButton {
-    -fx-color: #4bcad8;
-    -fx-border-color: #4bcad8;
-    -fx-text-fill: black;
+    -fx-color: #3e4142;
+    -fx-border-color: #3e4142;
+    -fx-text-fill: white;
     -fx-font-size: 14px;
 }
 
 .loadGameButton:hover {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #535556;
+    -fx-border-color: #535556;
+    -fx-text-fill: white;
 }
 .loadGameButton:pressed {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #2f3233;
+    -fx-border-color: #2f3233;
+    -fx-text-fill: white;
 }
 
 .saveGameButton {
-    -fx-color: #4bcad8;
-    -fx-border-color: #4bcad8;
-    -fx-text-fill: black;
+    -fx-color: #3e4142;
+    -fx-border-color: #3e4142;
+    -fx-text-fill: white;
     -fx-font-size: 14px;
 }
 
 .saveGameButton:hover {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #535556;
+    -fx-border-color: #535556;
+    -fx-text-fill: white;
 }
 .saveGameButton:pressed {
-    -fx-color: #348e99;
-    -fx-border-color: #348e99;
-    -fx-text-fill:white;
+    -fx-color: #2f3233;
+    -fx-border-color: #2f3233;
+    -fx-text-fill: white;
 }
 
-.gridpane {
+.gridPane {
     -fx-background-image: url("BattleShipGameRahmen.jpg");
     -fx-background-repeat: no-repeat;
 }
 
-.gridpane .background-image {
-    -fx-width: 600px;
-    -fx-height: 600px;
-}
 
-.battleship {
+
+.battleShip {
     -fx-background-image: url("479066843.jpg");
+    -fx-text-fill: black;
 }
 
+.
 .textField .content{
     -fx-background-color: #c0c0c0;
 }
