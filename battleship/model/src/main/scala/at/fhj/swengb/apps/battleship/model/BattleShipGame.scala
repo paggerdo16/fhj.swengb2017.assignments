@@ -20,7 +20,7 @@ case class BattleShipGame(battleField: BattleField,
   var hits: Map[Vessel, Set[BattlePos]] = Map()
 
 
-  var clickedCells : List[BattlePos] = List()
+  var alreadyClicked : List[BattlePos] = List()
 
   /**
     * contains all vessels which are destroyed
@@ -43,20 +43,20 @@ case class BattleShipGame(battleField: BattleField,
   }
 
   def hit(pos:BattlePos):Unit = {
-    if(!clickedCells.contains(pos))
-      clickedCells = clickedCells :+ pos
-    updateSlider(clickedCells.length)
+    if(!alreadyClicked.contains(pos))
+      alreadyClicked = alreadyClicked :+ pos
+    updateSlider(alreadyClicked.length)
   }
 
   def refresh(x:Int) : Unit = {
     println("refresh")
-    clickedCells.take(x).foreach((pos) => {
+    alreadyClicked.take(x).foreach((pos) => {
       println("shot " ++ pos.toString)
-      cells(pos.x*battleField.width + pos.y).getOnMouseClicked().handle(null)
+      cells(pos.x*battleField.width + pos.y).getOnMouseClicked.handle(null)
     })
   }
 
-  def getCells(): Seq[BattleFxCell] = cells
+  def getCells: Seq[BattleFxCell] = cells
 
 
   def updateGameState(vessel: Vessel, pos: BattlePos): Unit = {

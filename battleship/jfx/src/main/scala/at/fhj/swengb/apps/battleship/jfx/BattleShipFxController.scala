@@ -30,15 +30,15 @@ class BattleShipFxController extends Initializable {
     val pGame: BattleShipProtobuf.BattleShipGame = convert(bsGame)
 
     val path = Paths.get("target/BattleShipProtobuf.bin")
-    val outstream = Files.newOutputStream(path)
+    val outStream = Files.newOutputStream(path)
 
-    pGame.writeTo(outstream)
+    pGame.writeTo(outStream)
 
     println("Wrote to " + path.toAbsolutePath.toString)
   }
 
   def slided(): Unit = {
-    init(bsGame);
+    init(bsGame)
     bsGame.refresh(slider.getValue.toInt)
     println(slider.getValue.toString)
     println(slider.getValue.toInt.toString)
@@ -50,11 +50,11 @@ class BattleShipFxController extends Initializable {
 
     val protoGame: BattleShipProtobuf.BattleShipGame = BattleShipProtobuf.BattleShipGame.parseFrom(in)
     val a = BattleShipGame(convert(protoGame).battleField, getCellWidth, getCellHeight, appendLog, updateSlider)
-    a.clickedCells = convert(protoGame).clickedCells
+    a.alreadyClicked = convert(protoGame).alreadyClicked
     init(a)
     println("Read Game from disc")
-    bsGame.refresh(bsGame.clickedCells.length)
-    slider.setMax(bsGame.clickedCells.length)
+    bsGame.refresh(bsGame.alreadyClicked.length)
+    slider.setMax(bsGame.alreadyClicked.length)
   }
 
   override def initialize(url: URL, rb: ResourceBundle): Unit = initGame()
@@ -80,7 +80,7 @@ class BattleShipFxController extends Initializable {
     for (c <- game.getCells) {
       battleGroundGridPane.add(c, c.pos.x, c.pos.y)
     }
-    game.getCells().foreach(c => c.init)
+    game.getCells.foreach(c => c.init())
   }
 
   private def updateSlider(x:Int):Unit = {

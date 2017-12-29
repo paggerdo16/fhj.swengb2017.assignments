@@ -11,9 +11,9 @@ object BattleShipProtocol {
     .setBattleField(BattleShipProtobuf.BattleField.newBuilder()
       .setWidth(g.battleField.width)
       .setHeight(g.battleField.height)
-      .setFleet(BattleShipProtobuf.Fleet.newBuilder().addAllVessel(g.battleField.fleet.vessels.map(convert).toIterable.asJava).build())
+      .setFleet(BattleShipProtobuf.Fleet.newBuilder().addAllVessel(g.battleField.fleet.vessels.map(convert).asJava).build())
       .build())
-    .addAllClickedCells(g.clickedCells.map(convert).toIterable.asJava)
+    .addAllAlreadyClicked(g.alreadyClicked.map(convert).asJava)
     .build()
 
   def convert(g : BattleShipProtobuf.BattleShipGame) : BattleShipGame = {
@@ -21,8 +21,8 @@ object BattleShipProtocol {
     val height = g.getBattleField.getHeight
     val fleet = g.getBattleField.getFleet.getVesselList.asScala.map(convert).toSet
     val battleField: BattleField = BattleField(width,height,Fleet(fleet))
-    val game = BattleShipGame(battleField, ((x:Int) => x.toDouble), ((x:Int) => x.toDouble),(x=>()), (x=>()))
-    g.getClickedCellsList.asScala.map(convert).foreach(game.hit)
+    val game = BattleShipGame(battleField, (x:Int) => x.toDouble, (x:Int) => x.toDouble,x=>(), x=>())
+    g.getAlreadyClickedList.asScala.map(convert).foreach(game.hit)
     game
   }
 
