@@ -1,42 +1,47 @@
-// see https://docs.oracle.com/javafx/2/api/javafx/scene/doc-files/cssref.html
-// see http://fxexperience.com/2011/12/styling-fx-buttons-with-css/
-
 #battleship {
-	//-fx-background-color:#00ff00;
+//-fx-background-color:#ff6600;
 }
 
-.button1 {
-    -fx-color:#E5B50D;
+.newGameButton {
+    -fx-color:#44afac;
+    -fx-text-fill: black;
 }
 
-.button1:hover {
-    -fx-color:#FBCD2F;
+.newGameButton:hover {
+    -fx-color:#89f9f6;
+    -fx-text-fill:black;
+    -fx-font-weight: bold;
 }
-.button1:pressed {
-    -fx-color:#DE7500;
+.newGameButton:pressed {
+    -fx-color:#89f9f6;
+    -fx-text-fill:black;
+    -fx-font-weight: bold
 }
 
-.button2 {
-    -fx-color:#2C8FF2;
-    -fx-border-color:#0014ED;
+.loadGameButton {
+    -fx-color:#61adab;
 }
 
-.button2:hover {
+.loadGameButton:hover {
     -fx-color:#76B5F5;
+    -fx-text-fill:black;
 }
-.button2:pressed {
+.loadGameButton:pressed {
     -fx-color:#0A6ED1;
 }
 
-.button3 {
-    -fx-color:#17AE04;
+.saveGameButton {
+    -fx-color:#7fa5a4;
+    -fx-text-fill:black;
 }
 
-.button3:hover {
+.saveGameButton:hover {
     -fx-color:#41FF00;
+    -fx-text-fill:black;
 }
-.button3:pressed {
+.saveGameButton:pressed {
     -fx-color:#098A09;
+    -fx-text-fill:black;
 }
 
 

@@ -5,75 +5,63 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="540.0" prefWidth="752.0" styleClass="battleship" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
-    <right>
-
-
-    </right>
-    <top>
-        <Label prefHeight="51.0" prefWidth="359.0" text="Battleship" textFill="#e1b74c" BorderPane.alignment="CENTER">
+<GridPane maxHeight="850.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="850.0" prefWidth="600.0" styleClass="battleship" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.fhj.swengb.apps.battleship.jfx.BattleShipFxController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+        <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="80.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="600.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="80.0" minHeight="10.0" prefHeight="20.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="200.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <Label alignment="CENTER" minWidth="300.0" prefHeight="80.0" prefWidth="600.0" text="Battleship" GridPane.columnSpan="2147483647">
             <font>
-                <Font size="27.0" />
+                <Font size="34.0" />
             </font>
         </Label>
-    </top>
-    <right>
-        <VBox prefHeight="392.0" prefWidth="138.0" BorderPane.alignment="CENTER">
-            <children>
-                <Button fx:id="button" onAction="#newGame" prefHeight="27.0" prefWidth="142.0" styleClass="button1" text="New Game">
-                    <VBox.margin>
-                        <Insets />
-                    </VBox.margin></Button>
-                <Button fx:id="button1" onAction="#loadGame" prefHeight="27.0" prefWidth="142.0" styleClass="button2" stylesheets="@BattleShip.css" text="Load Game">
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin></Button>
-                <Button fx:id="button11" onAction="#saveGame" prefHeight="27.0" prefWidth="142.0" styleClass="button3" stylesheets="@BattleShip.css" text="Save Game">
-                    <VBox.margin>
-                        <Insets top="5.0" />
-                    </VBox.margin></Button>
-            </children>
-        </VBox>
-    </right>
-    <center>
-        <GridPane fx:id="battleGroundGridPane" alignment="CENTER" hgap="5.0" styleClass="gridpane" stylesheets="@BattleShip.css" vgap="5.0" BorderPane.alignment="CENTER">
+        <Button fx:id="button1" mnemonicParsing="false" onAction="#newGame" prefHeight="80.0" prefWidth="200.0" styleClass="newGameButton" text="New Game" GridPane.rowIndex="1" />
+        <Button fx:id="button2" mnemonicParsing="false" onAction="#loadGame" prefHeight="80.0" prefWidth="200.0" styleClass="loadGameButton" text="Load Game" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Button fx:id="button3" mnemonicParsing="false" onAction="#saveGame" prefHeight="80.0" prefWidth="200.0" styleClass="saveGameButton" text="Save Game" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <TextArea fx:id="log" maxHeight="200.0" maxWidth="600.0" prefHeight="200.0" prefWidth="600.0" GridPane.columnSpan="3" GridPane.rowIndex="4" />
+        <GridPane fx:id="battleGroundGridPane" hgap="10.0" styleClass="gridpane" vgap="10.0" GridPane.columnSpan="3" GridPane.rowIndex="2">
             <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
             </columnConstraints>
             <rowConstraints>
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
-                <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
             </rowConstraints>
+            <padding>
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+            </padding>
         </GridPane>
-    </center>
-    <left>
-        <TextArea fx:id="log" prefHeight="489.0" prefWidth="128.0" BorderPane.alignment="CENTER" />
-    </left>
-    <bottom>
-        <Slider fx:id="slider" max="1.0" onMouseDragged="#slided" prefHeight="69.0" prefWidth="752.0" value="1.0" BorderPane.alignment="CENTER" />
-    </bottom>
-</BorderPane>
+        <Slider fx:id="slider" onMouseDragged="#slided" GridPane.columnSpan="3" GridPane.rowIndex="3" />
+    </children>
+</GridPane>
