@@ -62,14 +62,11 @@
     -fx-background-repeat: no-repeat;
 }
 
-
-
 .battleShip {
     -fx-background-image: url("479066843.jpg");
     -fx-text-fill: black;
 }
 
-.
 .textField .content{
     -fx-background-color: #c0c0c0;
 }
